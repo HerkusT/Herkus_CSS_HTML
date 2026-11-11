@@ -262,6 +262,296 @@ input[type="reset"]:focus-visible {
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.32);
 }
 
+.skill-xp-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.skill-xp-summary,
+.skill-rank-table-wrap {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--content-border);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(33, 54, 65, 0.76), rgba(20, 31, 38, 0.94));
+  box-shadow: var(--content-shadow);
+}
+
+.skill-xp-summary h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.25rem;
+  color: #eaf5f2;
+  font-family: var(--default-font);
+  font-size: 1.15rem;
+}
+
+.skill-xp-summary h3 i {
+  color: var(--link-color);
+}
+
+.skill-xp-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.skill-xp-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 5.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(211, 226, 232, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(9, 20, 26, 0.62);
+}
+
+.skill-xp-stat:first-child {
+  grid-row: span 2;
+}
+
+.skill-xp-stat > span {
+  color: #b8cbd1;
+  font-size: 0.8rem;
+}
+
+.skill-xp-stat > strong {
+  margin-top: 0.25rem;
+  color: var(--link-color);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.skill-xp-stat > strong small {
+  font-size: 0.8rem;
+}
+
+.skill-xp-stat:last-child > strong {
+  color: var(--heading-color);
+  font-size: 1rem;
+}
+
+.skill-xp-progress {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(211, 226, 232, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(9, 20, 26, 0.62);
+}
+
+.skill-xp-progress-label,
+.skill-xp-progress-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.skill-xp-progress-label {
+  margin-bottom: 0.65rem;
+  color: #eaf5f2;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.skill-xp-progress-label strong {
+  color: var(--heading-color);
+}
+
+.skill-xp-progress-track {
+  height: 0.85rem;
+  overflow: hidden;
+  border: 1px solid #58717b;
+  border-radius: 999px;
+  background: #20343c;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+
+.skill-xp-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #39b9aa, #80dbc9);
+  box-shadow: 0 0 12px rgba(128, 219, 201, 0.45);
+}
+
+.skill-xp-progress-details {
+  margin-top: 0.55rem;
+  color: #b8cbd1;
+  font-size: 0.75rem;
+}
+
+.skill-rank-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #eaf5f2;
+  text-align: left;
+}
+
+.skill-rank-table caption {
+  padding: 0 0 0.85rem;
+  color: #b8cbd1;
+  font-size: 0.9rem;
+  caption-side: top;
+}
+
+.skill-rank-table th,
+.skill-rank-table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid rgba(211, 226, 232, 0.14);
+  vertical-align: middle;
+}
+
+.skill-rank-table thead th {
+  color: var(--heading-color);
+  font-size: 0.85rem;
+}
+
+.skill-rank-table tbody th {
+  width: 3.5rem;
+  color: #eaf5f2;
+}
+
+.skill-rank-table tbody tr:last-child th,
+.skill-rank-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.skill-rank-table .current-rank th,
+.skill-rank-table .current-rank td {
+  background: rgba(128, 219, 201, 0.1);
+  color: #f0f7f8;
+  font-weight: 700;
+}
+
+.skill-rank-table .current-rank th {
+  border-left: 3px solid var(--heading-color);
+}
+
+.current-rank-label {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(128, 219, 201, 0.16);
+  color: var(--heading-color);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.skill-kanban-board {
+  align-items: stretch;
+}
+
+.skill-kanban-column {
+  height: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--content-border);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(33, 54, 65, 0.76), rgba(20, 31, 38, 0.94));
+  box-shadow: var(--content-shadow);
+}
+
+.skill-kanban-column > h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.25rem;
+  color: #eaf5f2;
+  font-family: var(--default-font);
+  font-size: 1.15rem;
+}
+
+.skill-kanban-column > h3 > i {
+  color: var(--heading-color);
+}
+
+.skill-kanban-column > h3 > span {
+  margin-left: auto;
+  color: #b8cbd1;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.skill-kanban-card {
+  margin-top: 0.85rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(211, 226, 232, 0.14);
+  border-left: 4px solid var(--kanban-accent);
+  border-radius: 0.9rem;
+  background: rgba(9, 20, 26, 0.62);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-kanban-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--kanban-accent);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+.skill-kanban-card h4 {
+  margin: 0;
+  color: #f0f7f8;
+  font-family: var(--default-font);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.skill-kanban-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.skill-kanban-card .skill-status {
+  color: var(--kanban-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.skill-kanban-card .skill-xp {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--kanban-accent), transparent 50%);
+  border-radius: 999px;
+  color: #f0f7f8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.skill-kanban-column.planned {
+  --kanban-accent: #ffcf70;
+}
+
+.skill-kanban-column.learning {
+  --kanban-accent: #80dbc9;
+}
+
+.skill-kanban-column.completed {
+  --kanban-accent: #91d69a;
+}
+
+@media (max-width: 767px) {
+  .skill-xp-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-rank-table-wrap {
+    overflow-x: auto;
+  }
+
+  .skill-rank-table {
+    min-width: 25rem;
+  }
+}
+
 .resume .resume-item {
   margin-bottom: 3rem;
   padding: clamp(1.5rem, 3vw, 2.25rem);
