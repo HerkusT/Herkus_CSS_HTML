@@ -206,6 +206,26 @@ input[type="reset"]:focus-visible {
   color: #101a20;
 }
 
+.contact .contact-form .btn:disabled,
+.contact .contact-form .btn:disabled:hover,
+.contact .contact-form .btn:disabled:active {
+  border-color: #8b969a;
+  background-color: #8b969a;
+  color: #f1f3f4;
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+.contact .form-results {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #f0eee3;
+  color: #101a20;
+  font-style: italic;
+  white-space: pre-line;
+}
+
 .portfolio .btn-primary {
   border-color: var(--heading-color);
   border-radius: 0.75rem;
