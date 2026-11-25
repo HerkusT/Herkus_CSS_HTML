@@ -193,9 +193,50 @@ const skillContainers = {
   "Mokomasi": document.querySelector("#learning-skills"),
   "Atlikta": document.querySelector("#completed-skills")
 };
+const skillStatusOptions = ["Planuojama", "Mokomasi", "Atlikta"];
+const skillStatusesStorageKey = "ld12.skillStatuses";
 
 if (Object.values(skillContainers).every(Boolean)) {
   const getCountLabel = (count) => `${count} įgū${count === 1 ? "dis" : "džiai"}`;
+
+  const restoreSkillStatuses = () => {
+    const savedStatuses = localStorage.getItem(skillStatusesStorageKey);
+    if (savedStatuses === null) {
+      return;
+    }
+
+    let parsedStatuses;
+    try {
+      parsedStatuses = JSON.parse(savedStatuses);
+    } catch (error) {
+      console.error("Nepavyko atkurti įgūdžių būsenų iš vietinės saugyklos.", error);
+      return;
+    }
+
+    if (parsedStatuses === null || typeof parsedStatuses !== "object" || Array.isArray(parsedStatuses)) {
+      console.error("Vietinėje saugykloje išsaugotos įgūdžių būsenos netinkamo formato.");
+      return;
+    }
+
+    skills.forEach((skill) => {
+      const savedStatus = parsedStatuses[skill.name];
+      if (savedStatus === undefined) {
+        return;
+      }
+
+      if (!skillStatusOptions.includes(savedStatus)) {
+        console.error(`Netinkama išsaugota įgūdžio „${skill.name}“ būsena: ${savedStatus}`);
+        return;
+      }
+
+      skill.status = savedStatus;
+    });
+  };
+
+  const saveSkillStatuses = () => {
+    const statuses = Object.fromEntries(skills.map((skill) => [skill.name, skill.status]));
+    localStorage.setItem(skillStatusesStorageKey, JSON.stringify(statuses));
+  };
 
   const renderSkillCards = () => {
     Object.values(skillContainers).forEach((container) => {
@@ -216,7 +257,7 @@ if (Object.values(skillContainers).every(Boolean)) {
       statusSelect.className = "skill-status";
       statusSelect.setAttribute("aria-label", `Pakeisti „${skill.name}“ būseną`);
 
-      ["Planuojama", "Mokomasi", "Atlikta"].forEach((statusName) => {
+      skillStatusOptions.forEach((statusName) => {
         const option = document.createElement("option");
         option.value = statusName;
         option.textContent = statusName;
@@ -227,6 +268,7 @@ if (Object.values(skillContainers).every(Boolean)) {
       statusSelect.addEventListener("change", () => {
         skill.status = statusSelect.value;
         renderSkills();
+        saveSkillStatuses();
       });
 
       const xp = document.createElement("span");
@@ -336,5 +378,6 @@ if (Object.values(skillContainers).every(Boolean)) {
     updateExperienceProgress(completedXp);
   };
 
+  restoreSkillStatuses();
   renderSkills();
 }
